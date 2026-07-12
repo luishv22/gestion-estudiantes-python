@@ -21,8 +21,8 @@ def obtener_estudiantes():
     conexion = conectar()
     cursor = conexion.cursor()
 
-    cursor.execute("SELESCT id, nombre, edad, carrera, fecha_inscripcion FROM estudiantes")
-    filas = cursor.fetcha11()
+    cursor.execute("SELECT id, nombre, edad, carrera, fecha_inscripcion FROM estudiantes")
+    filas = cursor.fetchall()
 
     conexion.close()
     return filas
