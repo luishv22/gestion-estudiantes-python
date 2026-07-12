@@ -26,3 +26,27 @@ def obtener_estudiantes():
 
     conexion.close()
     return filas
+
+def eliminar_estudiantes(nombre):
+    """Elimina un estudiante por nombre. Devuelve True si se eliminó, False si no se encontró."""
+    conexion = conectar()
+    cursor = conexion.cursor()
+
+    cursor.execute("DELETE FROM estudiantes WHERE LOWER(nombre) = LOWER(?)", (nombre,))
+    eliminado = cursor.rowcount > 0
+
+    conexion.commit()
+    conexion.close()
+    return eliminado
+
+def modificar_estudiante(id_estudiante, campo, nuevo_valor):
+    """Modifica un campo específico de un estudiante por su ID."""
+    conexion = conectar()
+    cursor = conexion.cursor()
+
+    cursor.execute(f"UPDATE estudiantes SET {campo} = ? WHERE id = ?", (nuevo_valor, id_estudiante))
+    modificado = cursor.rowcount > 0
+
+    conexion.commit()
+    conexion.close()
+    return modificado
