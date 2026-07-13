@@ -27,7 +27,7 @@ def obtener_estudiantes():
     conexion.close()
     return filas
 
-def eliminar_estudiantes(nombre):
+def eliminar_estudiante(nombre):
     """Elimina un estudiante por nombre. Devuelve True si se eliminó, False si no se encontró."""
     conexion = conectar()
     cursor = conexion.cursor()
@@ -50,3 +50,17 @@ def modificar_estudiante(id_estudiante, campo, nuevo_valor):
     conexion.commit()
     conexion.close()
     return modificado
+
+def buscar_por_carrera(carrera):
+    """Devuelve la lista de estudiantes que pertenecen a una carrera específica."""
+    conexion = conectar()
+    cursor = conexion.cursor()
+
+    cursor.execute(
+        "SELECT nombre, edad FROM estudiantes WHERE LOWER(carrera) = LOWER(?)",
+        (carrera,)
+    )
+    resultados = cursor.fetchall()
+
+    conexion.close()
+    return resultados

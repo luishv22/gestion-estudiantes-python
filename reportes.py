@@ -19,7 +19,7 @@ def promedio_edad():
     cursor.execute("SELECT AVG(edad) FROM estudiantes")
     promedio = cursor.fetchone()[0]
 
-    conexion.close
+    conexion.close()
     return promedio
 
 def estudiante_mayor():
@@ -28,6 +28,17 @@ def estudiante_mayor():
     cursor = conexion.cursor()
 
     cursor.execute("SELECT nombre, edad FROM estudiantes ORDER BY edad DESC LIMIT 1")
+    resultado = cursor.fetchone()
+
+    conexion.close()
+    return resultado
+
+def estudiante_menor():
+    """Devuelve el estudiante con menor edad."""
+    conexion = conectar()
+    cursor = conexion.cursor()
+
+    cursor.execute("SELECT nombre, edad FROM estudiantes ORDER BY edad ASC LIMIT 1")
     resultado = cursor.fetchone()
 
     conexion.close()

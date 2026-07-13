@@ -22,7 +22,7 @@ def solicitar_nuevo_estudiante():
     """Pide los datos al usuario y agrega un estudiante."""
     try:
         print("\n--- Ingrese los datos del estudiante que desea guardar ---")
-        nombre = input("Ingreseel nombre: ")
+        nombre = input("Ingrese el nombre: ").strip()
         edad = int(input("Ingrese la edad: "))  
         carrera = input("Ingrese la carrera: ")
 
@@ -34,7 +34,7 @@ def solicitar_nuevo_estudiante():
 
 def solicitar_eliminar_estudiante():
     """Pide el nombre y elimina al estudiante correspondiente."""
-    nombre = input("Ingrese el nombre del estudiante que quiere eliminar: ")
+    nombre = input("Ingrese el nombre del estudiante que quiere eliminar: ").strip()
     if eliminar_estudiante(nombre):
         print("Estudiante eliminado")
     else:
