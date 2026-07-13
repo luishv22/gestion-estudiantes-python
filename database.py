@@ -13,9 +13,9 @@ def crear_tabla():
 
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS estudiantes (
-            id INTERGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             nombre TEXT NOT NULL,
-            edad INTERGER NOT NULL,
+            edad INTEGER NOT NULL,
             carrera TEXT NOT NULL,
             fecha_inscripcion TEXT NOT NULL
         )
